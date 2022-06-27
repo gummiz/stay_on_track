@@ -24,18 +24,24 @@ class Game {
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
                 this.player.moveLeft()
+                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
+                console.log("you lose")
+                   
             }
             else if (event.key === "ArrowRight") {
                 this.player.moveRight()
-            }
+                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
+                console.log("you lose")
+                }
             else if (event.key === "ArrowDown") {
                 this.player.moveDown()
+                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
+                console.log("you lose")
             }
             else if ( event.key === "ArrowUp") {
                 this.player.moveUp()
-                let nom = this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") 
-                   console.log(nom)
-                
+                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
+                console.log("you lose")
             }
         })
     }
@@ -89,30 +95,33 @@ class Player {
         this.positionY -= 29
         this.player.style.top = this.positionY +"px"
         this.playerPos[0] -= 1
-        
+        console.log(this.playerPos)
         }
     }
     moveDown(){
-        if (this.positionY < 219) 
+        if (this.positionY < 218) {
         this.positionY += 29
         this.player.style.top = this.positionY + "px"
         this.playerPos[0]+=1
-        
+        console.log(this.positionY)
+        console.log(this.playerPos)
+        }
     }
     moveRight(){
         
         if (this.positionX < 412){
         this.positionX += 44
         this.player.style.left = this.positionX + "px"
-        this.playerPos[1]-=1
-        
+        this.playerPos[1]+=1
+        console.log(this.playerPos)
         }
     } 
     moveLeft(){
         if (this.positionX > 16) {
         this.positionX -= 44
         this.player.style.left = this.positionX + "px"
-        this.playerPos[1]+=1
+        this.playerPos[1]-=1
+        console.log(this.playerPos)
         }
     }
     createPlayer(){
