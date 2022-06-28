@@ -10,7 +10,22 @@ const gameOverEl = document.getElementById("game-over")
 const winnerEl = document.getElementById("winner")
 const gameOverBtn = document.getElementById("game-over-btn")
 const winnerBtn = document.getElementById("winner-btn")
+const level1Btn = document.getElementById("lvl-btn")
+const level2Btn = document.getElementById("lvl2-btn")
 
+const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9]]
+const path2 = [[0,0], [1,0], [1,1], [1,2], [2,2], [2,3], [3,3], [3,4], [3,5], [3,6],[3,7], [4,7], [4,8], [4,9]]
+const path3 = []
+let chosenPath = [] // get filled depending on clicked level
+
+level1Btn.addEventListener("click", () => {
+    chosenPath = path1
+    console.log(chosenPath)
+} )
+level2Btn.addEventListener("click", () => {
+    chosenPath = path2
+    console.log(chosenPath)
+} )
 
 
 class Game {
@@ -34,36 +49,58 @@ class Game {
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
                 this.player.moveLeft()
-                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                
-                gameOverEl.style.display = "flex"
-                
-                else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
+                let count = 0;
+                for (let i = 0; i < chosenPath.length; i++){
+                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
+                        count++
+                    }
+                }
+                if (count < 1) {
+                    gameOverEl.style.display = "flex"  
+                }
+                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
                 winnerEl.style.display = "flex"
             }
             else if (event.key === "ArrowRight") {
                 this.player.moveRight()
-                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                
-                gameOverEl.style.display = "flex"
-                
-                else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
-                winnerEl.style.display = "flex"
+                let count = 0;
+                for (let i = 0; i < chosenPath.length; i++){
+                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
+                        count++
+                    }
                 }
+                if (count < 1) {
+                    gameOverEl.style.display = "flex"  
+                }
+                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
+                winnerEl.style.display = "flex"
+            }
             else if (event.key === "ArrowDown") {
                 this.player.moveDown()
-                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                gameOverEl.style.display = "flex"
-                
-                else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
+                let count = 0;
+                for (let i = 0; i < chosenPath.length; i++){
+                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
+                        count++
+                    }
+                }
+                if (count < 1) {
+                    gameOverEl.style.display = "flex"  
+                }
+                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
                 winnerEl.style.display = "flex"
             }
             else if ( event.key === "ArrowUp") {
                 this.player.moveUp()
-                if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                gameOverEl.style.display = "flex"
-                
-                else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
+                let count = 0;
+                for (let i = 0; i < chosenPath.length; i++){
+                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
+                        count++
+                    }
+                }
+                if (count < 1) {
+                    gameOverEl.style.display = "flex"  
+                }
+                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
                 winnerEl.style.display = "flex"
             } 
         })
@@ -100,26 +137,26 @@ class Game {
                     pathTiles[i].style.backgroundColor ="white"
                 }
             }
-            console.log(counter) // show counter
+            
             
         }
 
-        this.tiles[0][0].classList.add("tomato")
-        this.tiles[0][1].classList.add("tomato")
-        this.tiles[1][1].classList.add("tomato")
-        this.tiles[1][2].classList.add("tomato")
-        this.tiles[2][2].classList.add("tomato")
-        this.tiles[3][2].classList.add("tomato")
-        this.tiles[3][3].classList.add("tomato")
-        this.tiles[3][4].classList.add("tomato")
-        this.tiles[3][5].classList.add("tomato")
-        this.tiles[4][5].classList.add("tomato")
-        this.tiles[4][6].classList.add("tomato")
-        this.tiles[5][6].classList.add("tomato")
-        this.tiles[5][7].classList.add("tomato")
-        this.tiles[5][8].classList.add("tomato")
-        this.tiles[6][8].classList.add("tomato")
-        this.tiles[6][9].classList.add("tomato")
+        // this.tiles[0][0].classList.add("tomato")
+        // this.tiles[0][1].classList.add("tomato")
+        // this.tiles[1][1].classList.add("tomato")
+        // this.tiles[1][2].classList.add("tomato")
+        // this.tiles[2][2].classList.add("tomato")
+        // this.tiles[3][2].classList.add("tomato")
+        // this.tiles[3][3].classList.add("tomato")
+        // this.tiles[3][4].classList.add("tomato")
+        // this.tiles[3][5].classList.add("tomato")
+        // this.tiles[4][5].classList.add("tomato")
+        // this.tiles[4][6].classList.add("tomato")
+        // this.tiles[5][6].classList.add("tomato")
+        // this.tiles[5][7].classList.add("tomato")
+        // this.tiles[5][8].classList.add("tomato")
+        // this.tiles[6][8].classList.add("tomato")
+        // this.tiles[6][9].classList.add("tomato")
        })
     }
 }
@@ -148,7 +185,7 @@ class Player {
         this.positionY += 29
         this.player.style.top = this.positionY + "px"
         this.playerPos[0]+=1
-        console.log(this.positionY)
+        
         console.log(this.playerPos)
         }
     }
@@ -158,7 +195,7 @@ class Player {
         this.positionX += 44
         this.player.style.left = this.positionX + "px"
         this.playerPos[1]+=1
-        console.log(this.playerPos)
+        //console.log(this.playerPos)
         }
     } 
     moveLeft(){
@@ -166,7 +203,7 @@ class Player {
         this.positionX -= 44
         this.player.style.left = this.positionX + "px"
         this.playerPos[1]-=1
-        console.log(this.playerPos)
+       // console.log(this.playerPos)
         }
     }
     createPlayer(){
