@@ -16,7 +16,15 @@ const level2Btn = document.getElementById("lvl2-btn")
 const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9]]
 const path2 = [[0,0], [1,0], [1,1], [1,2], [2,2], [2,3], [3,3], [3,4], [3,5], [3,6],[3,7], [4,7], [4,8], [4,9]]
 const path3 = []
-let chosenPath = [] // get filled depending on clicked level
+let chosenPath = [] // gets filled depending on clicked level
+
+function showPath (){
+    for (i = 0; i < chosenPath.length; i++) {
+        for (j = 0; j < chosenPath.length; j++ ) {
+            this.tiles[chosenPath[i][j]].style.backgroundColor = "tomato"
+        }
+    }    
+ }
 
 level1Btn.addEventListener("click", () => {
     chosenPath = path1
@@ -33,18 +41,18 @@ class Game {
         console.log("constructor active")
         this.tiles = []
         this.player = null  
+        
     }
     onLoad(){
         this.player = new Player()
-        
         this.player.createPlayer()
         this.createBoard()
     }
-    onReload(){
+    //onReload(){
        
-        this.player = new Player()
-        this.player.createPlayer()
-    }
+        // this.player = new Player()
+        // this.player.createPlayer()
+    //}
     movePlayer(){
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
@@ -119,7 +127,6 @@ class Game {
         }console.log(this.tiles)
     }
     start(){
-        
     startBtnEl.addEventListener("click", ()=>{
         game.onReload()
         counterEL.innerHTML="6";
@@ -137,26 +144,14 @@ class Game {
                     pathTiles[i].style.backgroundColor ="white"
                 }
             }
-            
-            
         }
-
-        // this.tiles[0][0].classList.add("tomato")
-        // this.tiles[0][1].classList.add("tomato")
-        // this.tiles[1][1].classList.add("tomato")
-        // this.tiles[1][2].classList.add("tomato")
-        // this.tiles[2][2].classList.add("tomato")
-        // this.tiles[3][2].classList.add("tomato")
-        // this.tiles[3][3].classList.add("tomato")
-        // this.tiles[3][4].classList.add("tomato")
-        // this.tiles[3][5].classList.add("tomato")
-        // this.tiles[4][5].classList.add("tomato")
-        // this.tiles[4][6].classList.add("tomato")
-        // this.tiles[5][6].classList.add("tomato")
-        // this.tiles[5][7].classList.add("tomato")
-        // this.tiles[5][8].classList.add("tomato")
-        // this.tiles[6][8].classList.add("tomato")
-        // this.tiles[6][9].classList.add("tomato")
+        
+        
+            for (let i = 0; i < chosenPath.length; i++) {
+                for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                    this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
+                }
+            }            
        })
     }
 }
@@ -210,7 +205,6 @@ class Player {
         const playerTile = document.createElement("div")
         playerTile.id = "player"
         gridBoard.appendChild(playerTile)
-        console.log("wuff") 
         return playerTile
     }
 }
