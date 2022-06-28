@@ -2,6 +2,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(137, 202, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #board{
     position: relative;
@@ -35,4 +39,31 @@ body {
 }
 .tomato {
     background-color: tomato;
+}
+#game-over{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    color: white;
+    width: 400px;
+    height: 300px;
+    background-color:rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 1;
+}
+#winner {
+   
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        color: white;
+        width: 400px;
+        height: 300px;
+        background-color:rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 1;
 }

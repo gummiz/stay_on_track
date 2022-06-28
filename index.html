@@ -9,9 +9,17 @@
 </head>
 <body>
     <h1>Stay On Track</h1>
-    <h2>counter</h2>
+    <h2 id="counter"></h2>
     <div id="game"></div>
     <button id="start-btn">Start Game</button>
+    <div id="game-over">
+        <h2>Game over :(</h2>
+        <button id="game-over-btn" onClick="history.go(0);">try again</button>
+    </div>
+    <div id="winner">
+        <h2>Congratulations, you won!</h2>
+        <button id ="winner-btn" onClick="history.go(0);">try again?</button>
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>

@@ -5,6 +5,12 @@ const gameEl = document.getElementById("game")
         gridBoard.id = "board"
         console.log(gameEl)
         document.body.appendChild(gridBoard)
+const counterEL = document.getElementById("counter")
+const gameOverEl = document.getElementById("game-over")
+const winnerEl = document.getElementById("winner")
+const gameOverBtn = document.getElementById("game-over-btn")
+const winnerBtn = document.getElementById("winner-btn")
+
 
 
 class Game {
@@ -15,46 +21,54 @@ class Game {
     }
     onLoad(){
         this.player = new Player()
-        this.movePlayer()
+        
         this.player.createPlayer()
         this.createBoard()
     }
-    
+    onReload(){
+       
+        this.player = new Player()
+        this.player.createPlayer()
+    }
     movePlayer(){
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
                 this.player.moveLeft()
                 if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                console.log("you lose")
+                
+                gameOverEl.style.display = "flex"
+                
                 else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
-                console.log("You Win!")
+                winnerEl.style.display = "flex"
             }
             else if (event.key === "ArrowRight") {
                 this.player.moveRight()
                 if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                console.log("you lose")
+                
+                gameOverEl.style.display = "flex"
+                
                 else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
-                console.log("You Win!")
+                winnerEl.style.display = "flex"
                 }
             else if (event.key === "ArrowDown") {
                 this.player.moveDown()
                 if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                console.log("you lose")
+                gameOverEl.style.display = "flex"
+                
                 else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
-                console.log("You Win!")
+                winnerEl.style.display = "flex"
             }
             else if ( event.key === "ArrowUp") {
                 this.player.moveUp()
                 if( !this.tiles[this.player.playerPos[0]][this.player.playerPos[1]].className.includes("tomato") ) 
-                console.log("you lose")
+                gameOverEl.style.display = "flex"
+                
                 else if (this.player.playerPos[0] === 6 && this.player.playerPos[1] === 9) 
-            console.log("You Win!")
-            }
-            
-            
+                winnerEl.style.display = "flex"
+            } 
         })
     }
-  
+
     createBoard(){
         for (let i = 0; i < 8; i++){
             this.tiles[i]=[] 
@@ -65,25 +79,29 @@ class Game {
                     gridBoard.appendChild(newTile)
                     this.tiles[i].push(newTile)
             }
-        }
+        }console.log(this.tiles)
     }
     start(){
+        
     startBtnEl.addEventListener("click", ()=>{
-        let counter =6;
+        game.onReload()
+        counterEL.innerHTML="6";
         const intId= setInterval(callback, 1000)
         function callback(){
-            if (counter > 0){
-                counter--
+            if (counterEL.innerHTML > 0){
+                counterEL.innerHTML--
             }
             else {
                 clearInterval(intId)
-                console.log("Good Luck")
+                game.movePlayer()
+                counterEL.innerHTML = "Good Luck!"
                 const pathTiles= document.getElementsByClassName("tomato")
                 for (let i = 0; i < pathTiles.length; i++){
                     pathTiles[i].style.backgroundColor ="white"
                 }
             }
-            console.log(counter)
+            console.log(counter) // show counter
+            
         }
 
         this.tiles[0][0].classList.add("tomato")
