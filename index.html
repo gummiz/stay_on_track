@@ -5,31 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&family=Rubik+Moonrocks&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap" rel="stylesheet">
     <title>Stay on track</title>
 </head>
 <body>
-    <h1>Stay On Track</h1>
-    <h2 id="counter"></h2>
-    <div id="game"></div>
-    <div id="btn-section">
-        <label for="levels">Pick a level:</label>
-        <select name="levels" id="levels-select" >
-            <option id="lvl-1" value="Level 0">...</option>
-            <option id="lvl-1" value="Level 1">Level 1</option>
-            <option id="lvl-2" value="Level 2">Level 2</option>
-            <option id="lvl-3" value="Level 3">Level 3</option>
-            <option id="lvl-4" value="Level 4">Level 4</option>
-            <option id="lvl-5" value="Level 5">Level 5</option>
-            <option id="lvl-6" value="Level 6">Level 6</option>
-            <option id="lvl-7" value="Level 7">Level 7</option>
-            <option id="lvl-8" value="Level 8">Level 8</option>
-            <option id="lvl-9" value="Level 9">Level 9</option>
-            <option id="lvl-10" value="Level 10">Level 10</option>
-        </select>
-        <!-- <button id="lvl-btn">level1</button>
-        <button id="lvl2-btn">level2</button> -->
-        <button id="start-btn">Start Game</button>
-    </div>
+        <h1 id="real1">STAY ON TRACK</h1>
+    <div class="main-hud">
+        <div id="game"></div>
+        <div id="btn-section">
+            <h2 id="counter"></h2>  
+            <label for="levels">PICK A LEVEL</label>
+            <select name="levels" id="levels-select" >
+                <option id="lvl-1" value="Level 0">...</option>
+                <option id="lvl-1" value="Level 1">Level 1</option>
+                <option id="lvl-2" value="Level 2">Level 2</option>
+                <option id="lvl-3" value="Level 3">Level 3</option>
+                <option id="lvl-4" value="Level 4">Level 4</option>
+                <option id="lvl-5" value="Level 5">Level 5</option>
+                <option id="lvl-6" value="Level 6">Level 6</option>
+                <option id="lvl-7" value="Level 7">Level 7</option>
+                <option id="lvl-8" value="Level 8">Level 8</option>
+                <option id="lvl-9" value="Level 9">Level 9</option>
+                <option id="lvl-10" value="Level 10">Level 10</option>
+            </select>
+            <button id="start-btn">START GAME</button>
+        </div>
+        
+    </div>  
     <div id="game-over">
         <h2>Game over :(</h2>
         <button id="game-over-btn" onClick="history.go(0);">try again</button>
@@ -37,7 +44,9 @@
     <div id="winner">
         <h2>Congratulations, you won!</h2>
         <button id ="winner-btn" onClick="history.go(0);">try again?</button>
+        <button id ="next-level-btn">Next Level</button>
     </div>
+    <!-- <img src="./images/1462D4BC-BA78-4C8C-9F61-4782EAA62D36_1_201_a.jpeg" alt=""> -->
     <script src="./js/main.js"></script>
 </body>
 </html>

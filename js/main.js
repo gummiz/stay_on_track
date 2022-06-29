@@ -3,8 +3,8 @@ const startBtnEl = document.getElementById("start-btn")
 const gridBoard = document.createElement("div")
 const gameEl = document.getElementById("game")
         gridBoard.id = "board"
-        console.log(gameEl)
-        document.body.appendChild(gridBoard)
+        gameEl.appendChild(gridBoard)
+        
 const counterEL = document.getElementById("counter")
 const gameOverEl = document.getElementById("game-over")
 const winnerEl = document.getElementById("winner")
@@ -13,7 +13,7 @@ const winnerBtn = document.getElementById("winner-btn")
 const level1Btn = document.getElementById("lvl-btn")
 const level2Btn = document.getElementById("lvl2-btn")
 const levelList = document.getElementById("levels-select")
-
+const nextLevel = document.getElementById("next-level-btn")
 
 const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9]]
 const path2 = [[0,0], [1,0], [1,1], [1,2], [2,2], [2,3], [3,3], [3,4], [3,5], [3,6],[3,7], [4,7], [4,8], [4,9]]
@@ -21,11 +21,22 @@ const path3 = []
 let chosenPath = [] // gets filled depending on clicked level
 
 
-// level2Btn.addEventListener("click", () => {
-//     chosenPath = path2
-//     console.log(chosenPath)
-// } )
-
+const howTo = document.createElement("div")
+howTo.id= "how-to"
+document.body.appendChild(howTo)
+howTo.innerHTML = `<h1>Hey there!</h2>
+                    <p>The following game is all about your remembering skills! <br>
+                    When you choose a level and click the start button, you have 6 seconds to remember the displayed path. <br>
+                    After that, the path will turn invisible. Now you have to remember the path.<br>
+                    But please:
+                    </p>
+                    <h1>Stay On Track!</h3>
+                    <button id="hi-btn">Got it!</button>
+                    `
+gotItBtn = document.getElementById("hi-btn")
+gotItBtn.addEventListener("click", () => {
+    howTo.style.display = "none"
+})
 
 class Game {
     constructor (){
@@ -115,7 +126,7 @@ class Game {
                     gridBoard.appendChild(newTile)
                     this.tiles[i].push(newTile)
             }
-        }console.log(this.tiles)
+        }
     }
     chooseLevel() {levelList.addEventListener("change", () => {
         console.log("you selected", levelList.value)
@@ -168,13 +179,14 @@ class Game {
                 counterEL.innerHTML = "Good Luck!"
                 const pathTiles= document.getElementsByClassName("tomato")
                 for (let i = 0; i < pathTiles.length; i++){
-                    pathTiles[i].style.backgroundColor ="white"
+                    pathTiles[i].style.backgroundImage = 'url("https://img.itch.zone/aW1hZ2UvNzk4NDcyLzQ0NzEwODQucG5n/original/hbpgZ%2B.png")'
                 }
             }
         }
             for (let i = 0; i < chosenPath.length; i++) {
                 for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
                     this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
+                    
                 }
             }            
     } else alert("You need to pick a level first!")
@@ -231,7 +243,8 @@ class Player {
         return playerTile
     }
 }
-
+let audio = new Audio('../audio/Down With Your Getup - Mini Vandals.mp3')
+audio.play()
 const game = new Game()
 
 game.onLoad()
