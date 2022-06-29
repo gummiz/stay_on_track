@@ -44,15 +44,15 @@ class Game {
         
     }
     onLoad(){
-        this.player = new Player()
-        this.player.createPlayer()
-        this.createBoard()
-    }
-    //onReload(){
-       
         // this.player = new Player()
         // this.player.createPlayer()
-    //}
+        this.createBoard()
+    }
+    onReload(){
+       
+        this.player = new Player()
+        this.player.createPlayer()
+    }
     movePlayer(){
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
@@ -145,8 +145,6 @@ class Game {
                 }
             }
         }
-        
-        
             for (let i = 0; i < chosenPath.length; i++) {
                 for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
                     this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
@@ -155,9 +153,6 @@ class Game {
        })
     }
 }
-
-
-
 class Player {
     constructor (){
         this.playerPos = [0,0]

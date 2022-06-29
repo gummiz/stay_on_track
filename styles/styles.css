@@ -1,6 +1,9 @@
 body {
     margin: 0;
     padding: 0;
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/008/293/881/large/lucia-manetti-ice.jpg?1511816184");
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgb(137, 202, 242);
     display: flex;
     flex-direction: column;
@@ -24,14 +27,19 @@ body {
     height: 25px;
     background-color: rgb(255, 255, 255);
     margin: 2px;
-    
 }
+
 #player {
+   
+    /* background-image: url("/images/hero.png");
+    background-repeat: no-repeat; */
+    background-image: url("https://w7.pngwing.com/pngs/604/593/png-transparent-sprite-pixel-art-animated-film-walk-cycle-sprite-2d-computer-graphics-walk-cycle-timelapse-photography-thumbnail.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     margin: 4.5px 9px;
     width: 25px;
     height: 20px;
-    background-color: aquamarine;
     top: 16px;
     right: 0px;
     bottom: 0px;
