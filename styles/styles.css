@@ -14,17 +14,19 @@ body {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    width: 450px;
+    justify-content:space-evenly;
+    
+    width: 33rem;
+    height: 22rem;
     margin: 3rem 4rem;
     padding: 1rem;
     border: 3px solid rgb(15, 103, 234);
-    background-color: rgb(205, 229, 251);
-    
+    background-color: rgba(205, 229, 251, 0.7);
 }
 
 .newTiles {
-    width: 40px;
-    height: 25px;
+    width: 3rem;
+    height: 2.3rem;
     background-color: rgb(255, 255, 255);
     margin: 2px;
 }
@@ -39,7 +41,7 @@ body {
     position: absolute;
     margin: 4.5px 9px;
     width: 25px;
-    height: 20px;
+    height: 25px;
     top: 16px;
     right: 0px;
     bottom: 0px;

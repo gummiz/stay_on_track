@@ -12,28 +12,19 @@ const gameOverBtn = document.getElementById("game-over-btn")
 const winnerBtn = document.getElementById("winner-btn")
 const level1Btn = document.getElementById("lvl-btn")
 const level2Btn = document.getElementById("lvl2-btn")
+const levelList = document.getElementById("levels-select")
+
 
 const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9]]
 const path2 = [[0,0], [1,0], [1,1], [1,2], [2,2], [2,3], [3,3], [3,4], [3,5], [3,6],[3,7], [4,7], [4,8], [4,9]]
 const path3 = []
 let chosenPath = [] // gets filled depending on clicked level
 
-function showPath (){
-    for (i = 0; i < chosenPath.length; i++) {
-        for (j = 0; j < chosenPath.length; j++ ) {
-            this.tiles[chosenPath[i][j]].style.backgroundColor = "tomato"
-        }
-    }    
- }
 
-level1Btn.addEventListener("click", () => {
-    chosenPath = path1
-    console.log(chosenPath)
-} )
-level2Btn.addEventListener("click", () => {
-    chosenPath = path2
-    console.log(chosenPath)
-} )
+// level2Btn.addEventListener("click", () => {
+//     chosenPath = path2
+//     console.log(chosenPath)
+// } )
 
 
 class Game {
@@ -126,8 +117,44 @@ class Game {
             }
         }console.log(this.tiles)
     }
+    chooseLevel() {levelList.addEventListener("change", () => {
+        console.log("you selected", levelList.value)
+        if (levelList.value === "Level 1"){
+            chosenPath = path1
+        }
+        else  if (levelList.value === "Level 2"){
+            chosenPath = path2
+        }
+        else  if (levelList.value === "Level 3"){
+            chosenPath = path3
+        }
+        else  if (levelList.value === "Level 4"){
+            chosenPath = path4
+        }
+        else  if (levelList.value === "Level 5"){
+            chosenPath = path5
+        }
+        else  if (levelList.value === "Level 6"){
+            chosenPath = path6
+        }
+        else  if (levelList.value === "Level 7"){
+            chosenPath = path7
+        }
+        else  if (levelList.value === "Level 8"){
+            chosenPath = path8
+        }
+        else  if (levelList.value === "Level 9"){
+            chosenPath = path9
+        }
+        else  if (levelList.value === "Level 10"){
+            chosenPath = path10
+        }
+    })
+    }
     start(){
-    startBtnEl.addEventListener("click", ()=>{
+        this.chooseLevel()
+        startBtnEl.addEventListener("click", ()=>{
+        if (chosenPath.length > 0 && levelList.value !== "Level 0"){
         game.onReload()
         counterEL.innerHTML="6";
         const intId= setInterval(callback, 1000)
@@ -150,48 +177,49 @@ class Game {
                     this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
                 }
             }            
-       })
+    } else alert("You need to pick a level first!")
+})
     }
 }
 class Player {
     constructor (){
         this.playerPos = [0,0]
-        this.positionX = 16;
-        this.positionY = 16;
+        this.positionX = 1;
+        this.positionY = 1;
         this.player = this.createPlayer()
          
-       
     }
     moveUp(){
-        if (this.positionY > 16){
-        this.positionY -= 29
-        this.player.style.top = this.positionY +"px"
+        if (this.positionY > 1){
+        this.positionY -= 2.75
+        this.player.style.top = this.positionY +"rem"
         this.playerPos[0] -= 1
-        console.log(this.playerPos)
+        console.log(this.positionY)
         }
     }
     moveDown(){
-        if (this.positionY < 218) {
-        this.positionY += 29
-        this.player.style.top = this.positionY + "px"
+        if (this.positionY < 20) {
+        this.positionY += 2.75
+        this.player.style.top = this.positionY + "rem"
         this.playerPos[0]+=1
         
-        console.log(this.playerPos)
+        console.log(this.positionY)
         }
     }
     moveRight(){
-        
-        if (this.positionX < 412){
-        this.positionX += 44
-        this.player.style.left = this.positionX + "px"
+        console.log(this.positionX)
+        if (this.positionX < 28){
+        this.positionX += 3.35
+        this.player.style.left = this.positionX + "rem"
         this.playerPos[1]+=1
         //console.log(this.playerPos)
         }
     } 
     moveLeft(){
-        if (this.positionX > 16) {
-        this.positionX -= 44
-        this.player.style.left = this.positionX + "px"
+        console.log(this.positionX)
+        if (this.positionX > 2) {
+        this.positionX -= 3.35
+        this.player.style.left = this.positionX + "rem"
         this.playerPos[1]-=1
        // console.log(this.playerPos)
         }

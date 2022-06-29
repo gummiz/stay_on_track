@@ -11,9 +11,25 @@
     <h1>Stay On Track</h1>
     <h2 id="counter"></h2>
     <div id="game"></div>
-    <button id="lvl-btn">level1</button>
-    <button id="lvl2-btn">level2</button>
-    <button id="start-btn">Start Game</button>
+    <div id="btn-section">
+        <label for="levels">Pick a level:</label>
+        <select name="levels" id="levels-select" >
+            <option id="lvl-1" value="Level 0">...</option>
+            <option id="lvl-1" value="Level 1">Level 1</option>
+            <option id="lvl-2" value="Level 2">Level 2</option>
+            <option id="lvl-3" value="Level 3">Level 3</option>
+            <option id="lvl-4" value="Level 4">Level 4</option>
+            <option id="lvl-5" value="Level 5">Level 5</option>
+            <option id="lvl-6" value="Level 6">Level 6</option>
+            <option id="lvl-7" value="Level 7">Level 7</option>
+            <option id="lvl-8" value="Level 8">Level 8</option>
+            <option id="lvl-9" value="Level 9">Level 9</option>
+            <option id="lvl-10" value="Level 10">Level 10</option>
+        </select>
+        <!-- <button id="lvl-btn">level1</button>
+        <button id="lvl2-btn">level2</button> -->
+        <button id="start-btn">Start Game</button>
+    </div>
     <div id="game-over">
         <h2>Game over :(</h2>
         <button id="game-over-btn" onClick="history.go(0);">try again</button>
