@@ -42,7 +42,7 @@ class Game {
     constructor (){
         console.log("constructor active")
         this.tiles = []
-        this.player = null  
+        //this.player = null  
         
     }
     onLoad(){
@@ -53,7 +53,6 @@ class Game {
     onReload(){
        
         this.player = new Player()
-        this.player.createPlayer()
     }
     movePlayer(){
         document.addEventListener("keydown", (event) => {
@@ -63,6 +62,9 @@ class Game {
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
+                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
+                        }
                     }
                 }
                 if (count < 1) {
@@ -77,6 +79,9 @@ class Game {
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
+                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
+                        }
                     }
                 }
                 if (count < 1) {
@@ -91,6 +96,9 @@ class Game {
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
+                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
+                        }
                     }
                 }
                 if (count < 1) {
@@ -105,6 +113,9 @@ class Game {
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
+                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
+                        }
                     }
                 }
                 if (count < 1) {
@@ -197,7 +208,7 @@ class Player {
     constructor (){
         this.playerPos = [0,0]
         this.positionX = 1;
-        this.positionY = 1;
+        this.positionY = 0;
         this.player = this.createPlayer()
          
     }
@@ -206,7 +217,6 @@ class Player {
         this.positionY -= 2.75
         this.player.style.top = this.positionY +"rem"
         this.playerPos[0] -= 1
-        console.log(this.positionY)
         }
     }
     moveDown(){
@@ -214,8 +224,6 @@ class Player {
         this.positionY += 2.75
         this.player.style.top = this.positionY + "rem"
         this.playerPos[0]+=1
-        
-        console.log(this.positionY)
         }
     }
     moveRight(){

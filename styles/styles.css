@@ -9,28 +9,56 @@ body {
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-    font-family: 'Roboto', sans-serif;
-    
-  
+    font-family: 'Roboto', sans-serif;  
 }
+/* #curtain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 7, 7, 0.9);
+    z-index: 100;
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    visibility: hidden;
+    backdrop-filter: saturate(180%) blur(1px);
+} */
 
 h1 {
     font-family: 'Rubik Moonrocks', cursive;
     color: rgb(201, 239, 157);
     margin-bottom: 0;
+    margin-top: 0;
     text-align: center;
     font-size: 4rem;
 }
+
 #real1{
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1rem;
     border-radius: 1rem;
+    margin-top: 2rem;
 }
 p{
     text-align: center;
     line-height: 2rem;
     font-size: larger;
 
+}
+button{
+    color:rgb(108, 149, 61);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+   
+    background-color: rgba(255, 255, 255, 0.6);
 }
 #start-btn {
     color:rgb(108, 149, 61);
@@ -50,8 +78,9 @@ p{
     align-content: center;
     position: absolute;
     color: white;
-    width: 70vw;
-    height: 80vh;
+    width: 50rem;
+    height: 30rem;
+    border-radius: 1.5rem;
     background-color:rgba(0, 0, 0, 0.8);
     /* display: none; */
     z-index: 1;
@@ -79,6 +108,7 @@ p{
     /* border: 3px solid rgb(24, 101, 39); */
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
+    
 }
 .main-hud{
     display: flex;
@@ -101,14 +131,14 @@ p{
    
     /* background-image: url("/images/hero.png");
     background-repeat: no-repeat; */
-    background-image: url("https://w7.pngwing.com/pngs/604/593/png-transparent-sprite-pixel-art-animated-film-walk-cycle-sprite-2d-computer-graphics-walk-cycle-timelapse-photography-thumbnail.png");
+    background-image: url("../images/standing-23@2x.png");
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
     margin: 4.5px 9px;
-    width: 25px;
-    height: 25px;
-    top: 16px;
+    width: 2rem;
+    height: 3rem;
+    top: 0px;
     right: 0px;
     bottom: 0px;
     left:16px;
@@ -124,25 +154,27 @@ p{
     justify-content: space-around;
     position: absolute;
     color: white;
-    width: 400px;
-    height: 300px;
+    width: 30rem;
+    height: 30rem;
     background-color:rgba(0, 0, 0, 0.8);
     display: none;
     z-index: 1;
+    border-radius: 1.5rem;
 }
 #winner {
    
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        position: absolute;
-        color: white;
-        width: 400px;
-        height: 300px;
-        background-color:rgba(0, 0, 0, 0.8);
-        display: none;
-        z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    color: white;
+    width: 30rem;
+    height: 30rem;
+    background-color:rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 1;
+    border-radius: 1.5rem;
 }
 #btn-section {
     color: rgb(201, 239, 157);
@@ -158,8 +190,9 @@ p{
 }
 
 #counter {
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: 'Rubik Moonrocks', cursive;
+    margin: 0;
 }
 label {
     font-size: 1.5rem;
@@ -171,4 +204,8 @@ label {
     border-radius: 0.3rem;
     background-color: rgba(235, 235, 235, 0.5);
     color: white;
+}
+.tenor-gif-embed{
+    width: 50px;
+    height: auto;
 }
