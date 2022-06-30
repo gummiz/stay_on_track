@@ -125,7 +125,7 @@ button{
     height: 2.3rem;
     margin: 2px;
     border-radius: 0.5rem;
-    background-image: url("https://img.itch.zone/aW1hZ2UvNzk4NDcyLzQ0NzEwODQucG5n/original/hbpgZ%2B.png");
+    background-image: url(../images/tree-tile.png);
     background-size: cover;
 }
 
@@ -146,7 +146,7 @@ button{
     left:16px;
 }
 .tomato {
-    background-image: url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png");
+    background-image: url(../images/path-tile.webp);
     border-radius: 0.5rem;
 }
 #game-over{

@@ -88,7 +88,7 @@ class Game {
                             But please:
                             </p>
                             <h1>Stay On Track!</h3>
-                            <button class="btn" id="hi-btn">Got it!</button>
+                            <button class="btn" id="hi-btn">GOT IT!</button>
                             `
         const gotItBtn = document.getElementById("hi-btn")
         gotItBtn.addEventListener("click", () => {
