@@ -45,7 +45,7 @@ class Game {
 })
     }
     setupGame(){
-        console.log(this.tiles)
+
         this.foundElements = document.querySelectorAll(".tomato") 
         if (this.foundElements.length > 0) {                            //clear all tomato class + array
         for (let i=0; i<this.foundElements.length; i++ ){
