@@ -4,7 +4,7 @@ const gridBoard = document.createElement("div")
 const gameEl = document.getElementById("game")
         gridBoard.id = "board"
         gameEl.appendChild(gridBoard)
-        
+const pathTiles= document.getElementsByClassName("tomato")       
 const counterEL = document.getElementById("counter")
 const gameOverEl = document.getElementById("game-over")
 const winnerEl = document.getElementById("winner")
@@ -15,6 +15,7 @@ const level2Btn = document.getElementById("lvl2-btn")
 const levelList = document.getElementById("levels-select")
 const nextLevel = document.getElementById("next-level-btn")
 
+// Paths
 const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [1,8], [2,8], [2,9]]
 const path2 = [[0,0], [1,0], [2,0], [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [3,8], [3,9]]
 const path3 = [[0,0], [1,0], [2,0], [3,0], [3,1], [3,2], [3,3], [2,3], [1,3], [1,4], [1,5], [1,6], [1,7],[1,8],[2,8],[2,9]]
@@ -26,99 +27,96 @@ const path8 = [[0,0], [0,1], [0,2], [1,2], [2,2], [3,2], [4,2], [4,3], [5,3], [6
 const path9 = [[0,0], [1,0], [2,0], [3,0], [4,0], [5,0], [6,0], [6,1], [6,2], [6,3], [7,3], [7,4], [7,5], [6,6],[5,6], [4,6], [3,6], [3,7], [3,8], [2,8], [1,8], [1,9]]
 const path10 = [[0,0], [0,1], [0,2], [1,2], [2,2], [3,2], [4,2], [5,2], [6,2], [7,2], [7,3], [7,4], [6,4], [5,4],[4,4], [3,4], [2,4], [1,4], [1,5], [1,6],[2,6], [3,6], [4,6], [4,7], [5,7], [6,7], [6,8], [6,9]]
 
-
 let chosenPath = [] // gets filled depending on clicked level
 
 
-const howTo = document.createElement("div")
-howTo.id= "how-to"
-document.body.appendChild(howTo)
-howTo.innerHTML = `<h1>Hey there!</h2>
-                    <p>The following game is all about your remembering skills! <br>
-                    When you choose a level and click the start button, you have 6 seconds to remember the displayed path. <br>
-                    After that, the path will turn invisible. Now you have to remember the path.<br>
-                    But please:
-                    </p>
-                    <h1>Stay On Track!</h3>
-                    <button id="hi-btn">Got it!</button>
-                    `
-gotItBtn = document.getElementById("hi-btn")
-gotItBtn.addEventListener("click", () => {
-    howTo.style.display = "none"
-})
-
 class Game {
     constructor (){
-        console.log("constructor active")
         this.tiles = []
-        //this.player = null  
-        
+        this.foundElements = []
     }
-    onLoad(){
-        // this.player = new Player()
-        // this.player.createPlayer()
+    start(){
+        this.welcomeMessage()  
         this.createBoard()
+        this.chooseLevel()
+        this.nextLevel()
+        startBtnEl.addEventListener("click", ()=>{
+        this.setupGame()
+})
     }
-    onReload(){
-       
-        this.player = new Player()
+    setupGame(){
+        console.log(chosenPath)
+        this.foundElements = document.querySelectorAll(".tomato") 
+        if (this.foundElements.length > 0) {                            //clear all tomato class + array
+        for (let i=0; i<this.foundElements.length; i++ ){
+            this.foundElements[i].classList.remove("tomato")
+        } 
+        this.foundElements = []
+        }
+        if (chosenPath.length > 0 && levelList.value !== "Level 0"){
+            this.player = new Player()
+            counterEL.innerHTML="6";
+            const intId= setInterval(callback, 1000)
+            function callback(){
+                if (counterEL.innerHTML > 0){
+                    counterEL.innerHTML--
+                }
+                else {
+                    clearInterval(intId)
+                    game.movePlayer()
+                    counterEL.innerHTML = "GO!"
+                    for (let i = 1; i < pathTiles.length; i++){ //sets shown Path back to green
+                        pathTiles[i].style.backgroundImage = 'url("https://img.itch.zone/aW1hZ2UvNzk4NDcyLzQ0NzEwODQucG5n/original/hbpgZ%2B.png")'
+                    }
+                }
+            }
+                for (let i = 0; i < chosenPath.length; i++) {
+                    for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
+                        this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
+                    }
+                }         
+        } else alert("You need to pick a level first!")
+    }
+    welcomeMessage (){
+        const howTo = document.createElement("div")
+        howTo.id= "how-to"
+        document.body.appendChild(howTo)
+        howTo.innerHTML = `<h1>Hey there!</h2>
+                            <p>The following game is all about your remembering skills! <br>
+                            When you choose a level and click the start button, you have 6 seconds to remember the displayed path. <br>
+                            After that, the path will turn invisible. Now you have to remember the path.<br>
+                            But please:
+                            </p>
+                            <h1>Stay On Track!</h3>
+                            <button class="btn" id="hi-btn">Got it!</button>
+                            `
+        const gotItBtn = document.getElementById("hi-btn")
+        gotItBtn.addEventListener("click", () => {
+        howTo.style.display = "none"
+        })
     }
     movePlayer(){
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
                 this.player.moveLeft()
-                let count = 0;
-                for (let i = 0; i < chosenPath.length; i++){
-                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
-                        count++
-                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
-                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
-                        }
-                    }
-                }
-                if (count < 1) {
-                    gameOverEl.style.display = "flex"  
-                }
-                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
-                winnerEl.style.display = "flex"
+                this.checkForRightPatch()
             }
             else if (event.key === "ArrowRight") {
                 this.player.moveRight()
-                let count = 0;
-                for (let i = 0; i < chosenPath.length; i++){
-                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
-                        count++
-                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
-                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
-                        }
-                    }
-                }
-                if (count < 1) {
-                    gameOverEl.style.display = "flex"  
-                }
-                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
-                winnerEl.style.display = "flex"
+                this.checkForRightPath()
             }
             else if (event.key === "ArrowDown") {
                 this.player.moveDown()
-                let count = 0;
-                for (let i = 0; i < chosenPath.length; i++){
-                    if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
-                        count++
-                        for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
-                            this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].style.backgroundImage = 'url("https://manual.yoyogames.com/assets/Images/Asset_Editors/Editor_Tilesets_Single.png")'
-                        }
-                    }
-                }
-                if (count < 1) {
-                    gameOverEl.style.display = "flex"  
-                }
-                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
-                winnerEl.style.display = "flex"
+                this.checkForRightPath()
             }
             else if ( event.key === "ArrowUp") {
                 this.player.moveUp()
-                let count = 0;
+                this.checkForRightPath()
+            } 
+        })
+    }
+    checkForRightPath(){
+        let count = 0;
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
@@ -130,10 +128,9 @@ class Game {
                 if (count < 1) {
                     gameOverEl.style.display = "flex"  
                 }
-                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))) //pick last Index
+                else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))){ //pick last Index
                 winnerEl.style.display = "flex"
-            } 
-        })
+                }
     }
     createBoard(){
         for (let i = 0; i < 8; i++){
@@ -147,7 +144,8 @@ class Game {
             }
         }
     }
-    chooseLevel() {levelList.addEventListener("change", () => {
+    chooseLevel() {
+        levelList.addEventListener("change", () => {
         console.log("you selected", levelList.value)
         if (levelList.value === "Level 1"){
             chosenPath = path1
@@ -181,36 +179,45 @@ class Game {
         }
     })
     }
-    start(){
-        this.chooseLevel()
-        startBtnEl.addEventListener("click", ()=>{
-        if (chosenPath.length > 0 && levelList.value !== "Level 0"){
-        game.onReload()
-        counterEL.innerHTML="6";
-        const intId= setInterval(callback, 1000)
-        function callback(){
-            if (counterEL.innerHTML > 0){
-                counterEL.innerHTML--
+    nextLevel(){
+        nextLevel.addEventListener("click", () => {
+            winnerEl.style.display = "none"
+           
+            if (levelList.value === "Level 1"){
+                chosenPath = path2
             }
-            else {
-                clearInterval(intId)
-                game.movePlayer()
-                counterEL.innerHTML = "Good Luck!"
-                const pathTiles= document.getElementsByClassName("tomato")
-                
-                for (let i = 0; i < pathTiles.length; i++){
-                    pathTiles[i].style.backgroundImage = 'url("https://img.itch.zone/aW1hZ2UvNzk4NDcyLzQ0NzEwODQucG5n/original/hbpgZ%2B.png")'
-                }
+            else  if (levelList.value === "Level 2"){
+                chosenPath = path3
             }
-        }
-            for (let i = 0; i < chosenPath.length; i++) {
-                for (let j = 0; j < chosenPath[i].length-1; j++ ) {  // just one iteration
-                    this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
-                }
-            }            
-    } else alert("You need to pick a level first!")
-})
+            else  if (levelList.value === "Level 3"){
+                chosenPath = path4
+            }
+            else  if (levelList.value === "Level 4"){
+                chosenPath = path5
+            }
+            else  if (levelList.value === "Level 5"){
+                chosenPath = path6
+            }
+            else  if (levelList.value === "Level 6"){
+                chosenPath = path7
+            }
+            else  if (levelList.value === "Level 7"){
+                chosenPath = path8
+            }
+            else  if (levelList.value === "Level 8"){
+                chosenPath = path9
+            }
+            else  if (levelList.value === "Level 9"){
+                chosenPath = path10
+            }
+            else  if (levelList.value === "Level 10"){
+                alert("You actually stayed on track! There ist no next level!")
+            }
+            this.setupGame()
+        } )
     }
+
+    
 }
 class Player {
     constructor (){
@@ -259,11 +266,12 @@ class Player {
         return playerTile
     }
 }
+
 let audio = new Audio('../audio/Down With Your Getup - Mini Vandals.mp3')
 audio.play()
+
 const game = new Game()
 
-game.onLoad()
 game.start()
 
 

@@ -38,7 +38,7 @@ h1 {
     font-size: 4rem;
 }
 
-#real1{
+#real-h1{
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1rem;
     border-radius: 1rem;
@@ -60,7 +60,7 @@ button{
    
     background-color: rgba(255, 255, 255, 0.6);
 }
-#start-btn {
+.btn {
     color:rgb(108, 149, 61);
     padding: 1rem 2rem;
     border-radius: 8px;
@@ -69,7 +69,17 @@ button{
     font-size: larger;
     font-family: 'Rubik Moonrocks', cursive;
     background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.1s ease-in-out;
 }
+.btn:hover{
+    box-shadow: 0 0 30px 5px rgba(10, 10, 10, 0.7);
+    transform: scale(1.01);
+}
+.btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 30px 5px rgba(4, 4, 4, 0.7);
+}
+
 #how-to {
     display: flex;
     flex-direction: column;
@@ -86,15 +96,7 @@ button{
     z-index: 1;
     padding: 1rem;
 }
-#hi-btn{
-    color:rgb(48, 48, 42);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.8);
-}
+
 #board{
     position: relative;
     display: flex;
@@ -175,6 +177,7 @@ button{
     display: none;
     z-index: 1;
     border-radius: 1.5rem;
+    margin-top: 5rem;
 }
 #btn-section {
     color: rgb(201, 239, 157);
@@ -190,7 +193,7 @@ button{
 }
 
 #counter {
-    font-size: 4rem;
+    font-size: 8rem;
     font-family: 'Rubik Moonrocks', cursive;
     margin: 0;
 }
