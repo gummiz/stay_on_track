@@ -45,13 +45,14 @@ class Game {
 })
     }
     setupGame(){
-        console.log(chosenPath)
+        console.log(this.tiles)
         this.foundElements = document.querySelectorAll(".tomato") 
         if (this.foundElements.length > 0) {                            //clear all tomato class + array
         for (let i=0; i<this.foundElements.length; i++ ){
             this.foundElements[i].classList.remove("tomato")
         } 
         this.foundElements = []
+        console.log(this.tiles)
         }
         if (chosenPath.length > 0 && levelList.value !== "Level 0"){
             this.player = new Player()
