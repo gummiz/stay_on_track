@@ -14,7 +14,7 @@ To move the player, use arrow keys.
 ## Demo
 
 https://maktooob.github.io/stay_on_track/
-![Screenshot](https://github.com/maktooob/stay_on_track/blob/main/images/Screenshot%202022-06-30%20at%2017.28.25.png)
+![Screenshot](https://github.com/maktooob/stay_on_track/blob/main/images/Screenshot%202022-07-01%20at%2010.17.40.png)
 
 ## Further Improvements
 
