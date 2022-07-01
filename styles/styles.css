@@ -65,6 +65,7 @@ h2 {
     font-weight: 600;
     font-family: 'Rubik Moonrocks', cursive;
     color: rgb(201, 239, 157);
+    margin-bottom: 0;
 }
 .btn {
     color:rgb(108, 149, 61);
@@ -237,6 +238,8 @@ label {
 
 #music-btn {
     height: 2rem;
-    text-align: center;
     padding: 0 1rem;
+}
+#arrow-keys {
+    margin-top: 0;
 }
