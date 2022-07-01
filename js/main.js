@@ -29,6 +29,8 @@ const path10 = [[0,0], [0,1], [0,2], [1,2], [2,2], [3,2], [4,2], [5,2], [6,2], [
 let audio;
 let chosenPath = [] // gets filled depending on clicked level
 musicBtn.addEventListener("click", () => {
+    audio.pause();
+    audio.currentTime = 0;
     audio = new Audio('audio/Sunrise in Paris - Dan Henig.mp3')
     audio.play()
 })
