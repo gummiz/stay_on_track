@@ -42,6 +42,8 @@ class Game {
         //this.nextLevel()
         startBtnEl.addEventListener("click", ()=>{
         this.setupGame()
+        let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
+        audio.play()
 })
     }
     setupGame(){
@@ -131,6 +133,8 @@ class Game {
                 }
                 else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))){ //pick last Index
                 winnerEl.style.display = "flex"
+                let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
+                audio.play()
                 }
     }
     createBoard(){
@@ -268,8 +272,6 @@ class Player {
     }
 }
 
-let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
-audio.play()
 
 const game = new Game()
 

@@ -176,12 +176,13 @@ h2 {
     justify-content: space-around;
     position: absolute;
     color: white;
-    width: 30rem;
-    height: 30rem;
-    background-color:rgba(0, 0, 0, 0.8);
+    width: 80%;
+    height: 60%;
+    background-color:rgba(0, 0, 0, 0.85);
     display: none;
     z-index: 1;
     border-radius: 1.5rem;
+    margin-top: 10%;
 }
 #winner {
    
