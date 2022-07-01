@@ -28,12 +28,14 @@ const path9 = [[0,0], [1,0], [2,0], [3,0], [4,0], [5,0], [6,0], [6,1], [6,2], [6
 const path10 = [[0,0], [0,1], [0,2], [1,2], [2,2], [3,2], [4,2], [5,2], [6,2], [7,2], [7,3], [7,4], [6,4], [5,4],[4,4], [3,4], [2,4], [1,4], [1,5], [1,6],[2,6], [3,6], [4,6], [4,7], [5,7], [6,7], [6,8], [6,9]]
 
 let chosenPath = [] // gets filled depending on clicked level
-
+let audio = new Audio('audio/Sunrise in Paris - Dan Henig.mp3')
+audio.play()
 
 class Game {
     constructor (){
         this.tiles = []
         this.foundElements = []
+        this.audio
     }
     start(){
         //this.welcomeMessage()  
@@ -42,8 +44,8 @@ class Game {
         //this.nextLevel()
         startBtnEl.addEventListener("click", ()=>{
         this.setupGame()
-        let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
-        audio.play()
+        // // this.audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
+        // this.audio.play()
 })
     }
     setupGame(){
@@ -129,11 +131,17 @@ class Game {
                     }
                 }
                 if (count < 1) {
-                    gameOverEl.style.display = "flex"  
+                    gameOverEl.style.display = "flex"
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio = new Audio('audio/game-lose-sound.mp3')
+                    audio.play()
                 }
                 else if (chosenPath[chosenPath.length-1].join("").includes(this.player.playerPos.join(""))){ //pick last Index
                 winnerEl.style.display = "flex"
-                let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
+                audio.pause();
+                audio.currentTime = 0;
+                audio = new Audio('audio/Cartoon Bank Heist (Sting) - Doug Maxwell_Media Right Productions.mp3')
                 audio.play()
                 }
     }
@@ -276,5 +284,4 @@ class Player {
 const game = new Game()
 
 game.start()
-
 
