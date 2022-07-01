@@ -268,7 +268,7 @@ class Player {
     }
 }
 
-let audio = new Audio('./audio/Down With Your Getup - Mini Vandals.mp3')
+let audio = new Audio('audio/Down With Your Getup - Mini Vandals.mp3')
 audio.play()
 
 const game = new Game()
