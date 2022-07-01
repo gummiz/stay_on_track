@@ -121,7 +121,7 @@ class Game {
         })
     }
     checkForRightPath(){
-        let count = 0;
+        let count = 0; 
                 for (let i = 0; i < chosenPath.length; i++){
                     if (chosenPath[i].join("").includes(this.player.playerPos.join(""))) {
                         count++
