@@ -15,6 +15,8 @@ const level2Btn = document.getElementById("lvl2-btn")
 const levelList = document.getElementById("levels-select")
 const nextLevel = document.getElementById("next-level-btn")
 const musicBtn = document.getElementById("music-btn")
+const pickAlert = document.getElementById("pick-alert")
+console.log(pickAlert)
 // Paths
 const path1 = [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [1,8], [2,8], [2,9]]
 const path2 = [[0,0], [1,0], [2,0], [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [3,8], [3,9]]
@@ -87,7 +89,7 @@ class Game {
                         this.tiles[chosenPath[i][j]][chosenPath[i][j+1]].classList.add("tomato")
                     }
                 }         
-        } else alert("You need to pick a level first!")
+        } else pickAlert.innerHTML = `You need to select a level first.`
     }
     // welcomeMessage (){
     //     const howTo = document.createElement("div")

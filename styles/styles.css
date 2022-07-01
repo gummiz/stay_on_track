@@ -68,7 +68,7 @@ h2 {
     margin-bottom: 0;
 }
 .btn {
-    color:rgb(108, 149, 61);
+    color:rgb(201, 239, 157);
     padding: 1rem 2rem;
     border-radius: 8px;
     border: none;
@@ -227,4 +227,8 @@ label {
 }
 #arrow-keys {
     margin-top: 0;
+}
+#pick-alert {
+    margin:0;
+    padding:0
 }
