@@ -14,7 +14,7 @@ To move the player, use arrow keys.
 ## Demo
 
 https://maktooob.github.io/stay_on_track/
-!(./images/Screenshot 2022-06-30 at 17.28.25.png)
+![Screenshot](./images/Screenshot 2022-06-30 at 17.28.25.png)
 
 ## Further Improvements
 
@@ -24,3 +24,4 @@ https://maktooob.github.io/stay_on_track/
 - styling improvements
 - sound effects
 - animating the tiles when stepping on it
+- responsive
