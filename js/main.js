@@ -36,10 +36,10 @@ class Game {
         this.foundElements = []
     }
     start(){
-        this.welcomeMessage()  
+        //this.welcomeMessage()  
         this.createBoard()
         this.chooseLevel()
-        this.nextLevel()
+        //this.nextLevel()
         startBtnEl.addEventListener("click", ()=>{
         this.setupGame()
 })
@@ -78,24 +78,24 @@ class Game {
                 }         
         } else alert("You need to pick a level first!")
     }
-    welcomeMessage (){
-        const howTo = document.createElement("div")
-        howTo.id= "how-to"
-        document.body.appendChild(howTo)
-        howTo.innerHTML = `<h1>Hey there!</h2>
-                            <p>The following game is all about your remembering skills! <br>
-                            When you choose a level and click the start button, you have 6 seconds to remember the displayed path. <br>
-                            After that, the path will turn invisible. Now you have to remember the path.<br>
-                            But please:
-                            </p>
-                            <h1>Stay On Track!</h3>
-                            <button class="btn" id="hi-btn">GOT IT!</button>
-                            `
-        const gotItBtn = document.getElementById("hi-btn")
-        gotItBtn.addEventListener("click", () => {
-        howTo.style.display = "none"
-        })
-    }
+    // welcomeMessage (){
+    //     const howTo = document.createElement("div")
+    //     howTo.id= "how-to"
+    //     document.body.appendChild(howTo)
+    //     howTo.innerHTML = `<h1>Hey there!</h2>
+    //                         <p>The following game is all about your remembering skills! <br>
+    //                         When you choose a level and click the start button, you have 6 seconds to remember the displayed path. <br>
+    //                         After that, the path will turn invisible. Now you have to remember the path.<br>
+    //                         But please:
+    //                         </p>
+    //                         <h1>Stay On Track!</h3>
+    //                         <button class="btn" id="hi-btn">GOT IT!</button>
+    //                         `
+    //     const gotItBtn = document.getElementById("hi-btn")
+    //     gotItBtn.addEventListener("click", () => {
+    //     howTo.style.display = "none"
+    //     })
+    // }
     movePlayer(){
         document.addEventListener("keydown", (event) => {
             if(event.key === "ArrowLeft") {
@@ -180,43 +180,43 @@ class Game {
         }
     })
     }
-    nextLevel(){
-        nextLevel.addEventListener("click", () => {
-            winnerEl.style.display = "none"
+    // nextLevel(){
+    //     nextLevel.addEventListener("click", () => {
+    //         winnerEl.style.display = "none"
            
-            if (levelList.value === "Level 1"){
-                chosenPath = path2
-            }
-            else  if (levelList.value === "Level 2"){
-                chosenPath = path3
-            }
-            else  if (levelList.value === "Level 3"){
-                chosenPath = path4
-            }
-            else  if (levelList.value === "Level 4"){
-                chosenPath = path5
-            }
-            else  if (levelList.value === "Level 5"){
-                chosenPath = path6
-            }
-            else  if (levelList.value === "Level 6"){
-                chosenPath = path7
-            }
-            else  if (levelList.value === "Level 7"){
-                chosenPath = path8
-            }
-            else  if (levelList.value === "Level 8"){
-                chosenPath = path9
-            }
-            else  if (levelList.value === "Level 9"){
-                chosenPath = path10
-            }
-            else  if (levelList.value === "Level 10"){
-                alert("You actually stayed on track! There ist no next level!")
-            }
-            this.setupGame()
-        } )
-    }
+    //         if (levelList.value === "Level 1"){
+    //             chosenPath = path2
+    //         }
+    //         else  if (levelList.value === "Level 2"){
+    //             chosenPath = path3
+    //         }
+    //         else  if (levelList.value === "Level 3"){
+    //             chosenPath = path4
+    //         }
+    //         else  if (levelList.value === "Level 4"){
+    //             chosenPath = path5
+    //         }
+    //         else  if (levelList.value === "Level 5"){
+    //             chosenPath = path6
+    //         }
+    //         else  if (levelList.value === "Level 6"){
+    //             chosenPath = path7
+    //         }
+    //         else  if (levelList.value === "Level 7"){
+    //             chosenPath = path8
+    //         }
+    //         else  if (levelList.value === "Level 8"){
+    //             chosenPath = path9
+    //         }
+    //         else  if (levelList.value === "Level 9"){
+    //             chosenPath = path10
+    //         }
+    //         else  if (levelList.value === "Level 10"){
+    //             alert("You actually stayed on track! There ist no next level!")
+    //         }
+    //         this.setupGame()
+    //     } )
+    // }
 
     
 }
@@ -268,7 +268,7 @@ class Player {
     }
 }
 
-let audio = new Audio('../audio/Down With Your Getup - Mini Vandals.mp3')
+let audio = new Audio('./audio/Down With Your Getup - Mini Vandals.mp3')
 audio.play()
 
 const game = new Game()

@@ -60,6 +60,12 @@ button{
    
     background-color: rgba(255, 255, 255, 0.6);
 }
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Rubik Moonrocks', cursive;
+    color: rgb(201, 239, 157);
+}
 .btn {
     color:rgb(108, 149, 61);
     padding: 1rem 2rem;
@@ -96,7 +102,19 @@ button{
     z-index: 1;
     padding: 1rem;
 }
-
+.welcome {
+    color: rgb(201, 239, 157);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    margin-left: 2rem;
+    width: 25rem;
+    height: 26rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    padding: 1rem;
+}
 #board{
     position: relative;
     display: flex;
@@ -117,6 +135,7 @@ button{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 4rem;
     
 }
 
@@ -187,9 +206,10 @@ button{
     justify-content: space-around;
     margin-left: 2rem;
     width: 25rem;
-    height: 23rem;
+    height: 26rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
+    padding: 1rem;
 }
 
 #counter {
